@@ -1,0 +1,51 @@
+<div class="container-fluid task-manager">
+  <div class="row header">
+    <div class="col-xs-12 col-md-12">
+      <h2>Purchases</h2>
+    </div>
+  </div>
+  <div class="row body-wrapper">
+    <div class="col-xs-12 col-md-4 sidebar">
+      <h3>Purchases by Day</h3>
+      <div class="list-group">
+        <button type="button" class="list-group-item"
+                ng-repeat="day in days"
+                ng-click="setItem($index)"
+                ng-class="{ active: $index === selectedDay }">
+          {{ day }}
+        </button>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-8 content">
+      <div class="row content-header">
+          <h3 class="pull-left">{{ days[selectedDay] }} purshases</h3>
+          <button type="button" class="btn btn-primary pull-right"
+                  ng-click="addTask()">
+            Add purchases
+          </button>
+      </div>
+      <div class="table-wrapper">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Purchases Name</th>
+            <th>Store Name</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="purchas in purchases">
+            <td>{{ purchas.name }}</td>
+            <td>{{ purchas.store }}</td>
+            <td>{{ purchas.description }}</td>
+            <td>{{ purchas.price }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div ui-view id="myModal"></div>
