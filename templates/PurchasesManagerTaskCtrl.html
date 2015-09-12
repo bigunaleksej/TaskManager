@@ -10,7 +10,7 @@
       <div class="list-group">
         <button type="button" class="list-group-item"
                 ng-repeat="day in days"
-                ng-click="setItem($index)"
+                ng-click="changeDay($index)"
                 ng-class="{ active: $index === selectedDay }">
           {{ day }}
         </button>
@@ -21,7 +21,8 @@
       <div class="row content-header">
           <h3 class="pull-left">{{ days[selectedDay] }} purshases</h3>
           <button type="button" class="btn btn-primary pull-right"
-                  ng-click="addTask()">
+                  ng-click="addTask($event)"
+                  ui-sref=".add({ day: days[selectedDay]})">
             Add purchases
           </button>
       </div>
@@ -33,14 +34,18 @@
             <th>Store Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th></th>
           </tr>
           </thead>
           <tbody>
-          <tr ng-repeat="purchas in purchases">
-            <td>{{ purchas.name }}</td>
-            <td>{{ purchas.store }}</td>
-            <td>{{ purchas.description }}</td>
-            <td>{{ purchas.price }}</td>
+          <tr ng-repeat="purchase in purchases"
+              ui-sref=".edit({ day: days[selectedDay], purchaseIndex: $index})">
+            <td>{{ purchase.name }}</td>
+            <td>{{ purchase.store }}</td>
+            <td>{{ purchase.description }}</td>
+            <td>{{ purchase.price }}</td>
+            <td><span class="glyphicon glyphicon-remove"
+                      ng-click="purchases.splice($index,1)"></span></td>
           </tr>
           </tbody>
         </table>
@@ -48,4 +53,4 @@
     </div>
   </div>
 </div>
-<div ui-view id="myModal"></div>
+<div ui-view></div>
