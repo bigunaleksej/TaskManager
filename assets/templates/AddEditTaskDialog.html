@@ -7,33 +7,46 @@
         </button>
         <h4 class="modal-title" id="gridSystemModalLabel">{{ dialogTitle }} Purchase</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" ng-form name="purchaseForm">
         <div class="container-fluid">
           <div class="row">
             <div class="col-xs-5">
               <label for="purchaseName">Purchase Name</label>
-              <input type="text" class="form-control" id="purchaseName" placeholder="Enter purchase name"
-                     ng-model="purchase.name">
+              <input type="text" class="form-control" id="purchaseName" name="purchaseName" placeholder="Enter purchase name"
+                     ng-model="purchase.name" required>
+              <span class="error" ng-show="purchaseForm.purchaseName.$error.required">
+                Required!
+              </span>
             </div>
             <div class="col-xs-4">
               <label for="purchaseStoreName">Store Name</label>
-              <input type="text" class="form-control" id="purchaseStoreName" placeholder="Enter store name"
-                     ng-model="purchase.store">
+              <input type="text" class="form-control" id="purchaseStoreName" name="purchaseStoreName" placeholder="Enter store name"
+                     ng-model="purchase.store" required>
+              <span class="error" ng-show="purchaseForm.purchaseStoreName.$error.required">
+                Required!
+              </span>
             </div>
             <div class="col-xs-3">
               <label for="purchasePrice">Price</label>
               <div class="input-group">
                 <div class="input-group-addon">$</div>
-                <input type="number" class="form-control" id="purchasePrice" placeholder="00.0"
-                       ng-model="purchase.price">
+                <input type="number" class="form-control" id="purchasePrice" name="purchasePrice" placeholder="00.0"
+                       ng-model="purchase.price" min="5" required>
               </div>
+                <span class="error" ng-show="purchaseForm.purchasePrice.$error.min">
+                  Price should be larger than 5!
+                </span>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
               <label for="purchaseDescription">Description</label>
-              <textarea class="form-control" id="purchaseDescription" rows="5" ng-model="purchase.description">
+              <textarea class="form-control" id="purchaseDescription" name="purchaseDescription" rows="5"
+                        ng-model="purchase.description" required>
               </textarea>
+              <span class="error" ng-show="purchaseForm.purchaseDescription.$error.required">
+                  Required!
+                </span>
             </div>
           </div>
         </div>

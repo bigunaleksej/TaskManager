@@ -1,0 +1,56 @@
+body {
+  background-image: url(../images/bg.jpg);
+}
+.main-wrapper {
+  height: 100vh;
+  width: 992px;
+  margin: 0 auto;
+}
+.task-manager {
+  height: 95vh;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #FFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.task-manager .header {
+  border: 1px solid #CFCFCF;
+  background: linear-gradient(to bottom, #e4e9eb 0%, #cfd4d6 100%);
+}
+.task-manager .body-wrapper {
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  top: 63px;
+  right: 15px;
+}
+.task-manager .body-wrapper .sidebar,
+.task-manager .body-wrapper .content {
+  height: 100%;
+}
+.task-manager .body-wrapper .sidebar {
+  border: 1px solid #CFCFCF;
+  background-color: #DBE7EE;
+}
+.task-manager .body-wrapper .content {
+  border: 1px solid #CFCFCF;
+}
+.task-manager .body-wrapper .content .content-header {
+  padding: 0 15px;
+  border-bottom: 1px solid #CFCFCF;
+  background-color: #F5F5F5;
+}
+.task-manager .body-wrapper .content .content-header button[type="button"] {
+  margin: 9px 0;
+}
+.task-manager .body-wrapper .table-wrapper {
+  margin-top: 10px;
+  border: 2px solid #DCECF4;
+}
+.task-manager .body-wrapper .table-wrapper table {
+  margin-bottom: 0;
+}
+.task-manager .body-wrapper .table-wrapper table thead {
+  background-color: #ecf2f5;
+}

@@ -5,13 +5,15 @@ var App = angular.module('App', [
     'firebase'
 ]);
 
+require('./controllers');
+
 App.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/tasks');
 
     $stateProvider
         .state('tasks', {
             url: '/tasks',
-            templateUrl: 'templates/PurchasesManagerTaskCtrl.html',
+            templateUrl: 'templates/PurchasesManagerTask.html',
             controller: 'PurchasesManagerTaskCtrl'
         })
         .state('tasks.edit', {
