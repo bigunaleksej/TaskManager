@@ -1,12 +1,8 @@
-//App.controller('AddEditTaskDialogCtrl', [
-//    '$scope',
-//    '$state',
-//    '$stateParams',
-//    AddEditTaskDialogCtrl
-//]);
 module.exports = function ($scope, $state, $stateParams) {
-    var purchase = {};
+    var purchase = {},
+        $addEditTaskDialog = $('#addEditTaskDialog');
 
+    $scope.submitted = false;
     $scope.isEditPage = ($state.$current.toString().indexOf('edit') !== -1);
 
     if ($scope.isEditPage) {
@@ -16,8 +12,8 @@ module.exports = function ($scope, $state, $stateParams) {
         $scope.dialogTitle = 'Add';
     }
 
-    $('#addEditTaskDialog').modal();
-    $('#addEditTaskDialog').on('hidden.bs.modal', function () {
+    $addEditTaskDialog.modal();
+    $addEditTaskDialog.on('hidden.bs.modal', function () {
         $state.go('tasks')
     });
 
@@ -29,11 +25,21 @@ module.exports = function ($scope, $state, $stateParams) {
     };
 
     $scope.add = function () {
-        $scope.purchases.push($scope.purchase);
+        $scope.submitted = true;
+
+        if (!$scope.purchaseForm.$error.required) {
+            $addEditTaskDialog.modal('hide');
+            $scope.purchases.push($scope.purchase);
+        }
     };
 
     $scope.save = function () {
-        $scope.purchases[$stateParams.purchaseIndex] = $scope.purchase;
+        $scope.submitted = true;
+
+        if (!$scope.purchaseForm.$error.required) {
+            $addEditTaskDialog.modal('hide');
+            $scope.purchases[$stateParams.purchaseIndex] = $scope.purchase;
+        }
     };
 
     $scope.remove = function () {

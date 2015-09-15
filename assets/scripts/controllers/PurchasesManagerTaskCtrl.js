@@ -1,9 +1,3 @@
-//App.controller('PurchasesManagerTaskCtrl', [
-//    '$scope',
-//    '$firebaseObject',
-//    PurchasesManagerTaskCtrl
-//]);
-
 module.exports = function ($scope, $firebaseObject) {
     var ref = new Firebase("https://brilliant-torch-8395.firebaseio.com/days"),
         syncObject = $firebaseObject(ref);

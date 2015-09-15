@@ -14,7 +14,7 @@
               <label for="purchaseName">Purchase Name</label>
               <input type="text" class="form-control" id="purchaseName" name="purchaseName" placeholder="Enter purchase name"
                      ng-model="purchase.name" required>
-              <span class="error" ng-show="purchaseForm.purchaseName.$error.required">
+              <span class="error" ng-show="submitted && purchaseForm.purchaseName.$error.required">
                 Required!
               </span>
             </div>
@@ -22,7 +22,7 @@
               <label for="purchaseStoreName">Store Name</label>
               <input type="text" class="form-control" id="purchaseStoreName" name="purchaseStoreName" placeholder="Enter store name"
                      ng-model="purchase.store" required>
-              <span class="error" ng-show="purchaseForm.purchaseStoreName.$error.required">
+              <span class="error ng-hide" ng-show="submitted && purchaseForm.purchaseStoreName.$error.required">
                 Required!
               </span>
             </div>
@@ -44,7 +44,7 @@
               <textarea class="form-control" id="purchaseDescription" name="purchaseDescription" rows="5"
                         ng-model="purchase.description" required>
               </textarea>
-              <span class="error" ng-show="purchaseForm.purchaseDescription.$error.required">
+              <span class="error" ng-show="submitted && purchaseForm.purchaseDescription.$error.required">
                   Required!
                 </span>
             </div>
@@ -52,11 +52,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal" ng-click="add()" ui-sref="tasks"
+        <button type="button" class="btn btn-primary pull-left" ng-click="add()"
                 ng-if="!isEditPage">
           Add
         </button>
-        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal" ng-click="save()" ui-sref="tasks"
+        <button type="button" class="btn btn-primary pull-left" ng-click="save()"
                 ng-if="isEditPage">
           Save
         </button>

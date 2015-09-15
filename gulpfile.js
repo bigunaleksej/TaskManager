@@ -49,6 +49,11 @@ gulp.task('less', function () {
         .pipe(connect.reload());
 });
 
+gulp.task('icons', function() {
+    return gulp.src('bower_components/bootstrap/fonts/**.*')
+        .pipe(gulp.dest('./dist/styles/fonts'));
+});
+
 gulp.task('watch', function() {
 
     gulp.watch('bower.json', ['libs']);
@@ -65,4 +70,4 @@ gulp.task('connect', function () {
     })
 });
 
-gulp.task('default', ['libs', 'browserify', 'templates', 'less', 'images', 'watch', 'connect']);
+gulp.task('default', ['libs', 'browserify', 'templates', 'less', 'icons', 'images', 'watch', 'connect']);
